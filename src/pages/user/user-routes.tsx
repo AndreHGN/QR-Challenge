@@ -1,4 +1,4 @@
-import { Route, RouteObject } from 'react-router-dom';
+import { RouteObject } from 'react-router-dom';
 import UserListPage from './user-list.page';
 import UserDetailsPage from './user-details.page';
 
