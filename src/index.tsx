@@ -4,7 +4,6 @@ import App from './app';
 
 const rootElement = document.getElementById('root');
 
-// New as of React v18.x
 const root = createRoot(rootElement!);
 
 root.render(
