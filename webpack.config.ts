@@ -11,6 +11,7 @@ const config: ConfigurationAndDevServer = {
   entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     filename: 'bundle.js',
   },
   module: {
@@ -35,13 +36,11 @@ const config: ConfigurationAndDevServer = {
   ],
   devtool: 'source-map',
   devServer: {
-    static: {
-      directory: path.resolve(__dirname, 'dist'),
-    },
     port: 3000,
     open: true,
     hot: true,
     compress: true,
+    historyApiFallback: true,
   },
 };
 
