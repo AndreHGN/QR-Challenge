@@ -8,16 +8,20 @@ export type Spacing = {
   xl: string;
 };
 
+export type SpacingSize = keyof Spacing;
+
+export type Colors = {
+  primary: string;
+  secondary: string;
+  black: string;
+  white: string;
+  danger: string;
+  success: string;
+};
+
 declare module 'styled-components' {
   export interface DefaultTheme {
-    colors: {
-      primary: string;
-      secondary: string;
-      black: string;
-      white: string;
-      danger: string;
-      success: string;
-    };
+    colors: Colors;
     fonts: {
       regular: string;
       semibold: string;
