@@ -1,13 +1,20 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import routes from './pages/routes';
+import { Outlet } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import theme from './styles/theme';
+import GlobalStyle from './styles/global';
+import Navbar from './components/organism-navbar/navbar.component';
+import PageWrapper from './app.styled';
 
 const App = () => {
-  const router = createBrowserRouter(routes);
-
   return (
     <>
-      <h1>App</h1>
-      <RouterProvider router={router} />
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Navbar title='GestãoRH' />
+        <PageWrapper>
+          <Outlet />
+        </PageWrapper>
+      </ThemeProvider>
     </>
   );
 };
