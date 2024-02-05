@@ -1,25 +1,25 @@
 import { css, styled } from 'styled-components';
 import { Property } from 'csstype';
-import { Spacing, SpacingSize } from '../../styles/styled';
+import { Spacing } from '../../styles/styled';
 
 export interface MarginProps {
-  $m?: SpacingSize;
-  $mx?: SpacingSize;
-  $my?: SpacingSize;
-  $mt?: SpacingSize;
-  $mr?: SpacingSize;
-  $mb?: SpacingSize;
-  $ml?: SpacingSize;
+  $m?: Spacing;
+  $mx?: Spacing;
+  $my?: Spacing;
+  $mt?: Spacing;
+  $mr?: Spacing;
+  $mb?: Spacing;
+  $ml?: Spacing;
 }
 
 export interface PaddingProps {
-  $p?: SpacingSize;
-  $px?: SpacingSize;
-  $py?: SpacingSize;
-  $pt?: SpacingSize;
-  $pr?: SpacingSize;
-  $pb?: SpacingSize;
-  $pl?: SpacingSize;
+  $p?: Spacing;
+  $px?: Spacing;
+  $py?: Spacing;
+  $pt?: Spacing;
+  $pr?: Spacing;
+  $pb?: Spacing;
+  $pl?: Spacing;
 }
 
 export interface LayoutProps extends MarginProps, PaddingProps {
@@ -69,14 +69,14 @@ const Layout = styled.div<LayoutProps>`
 `;
 
 const defineSpacingValues = (
-  themePropertyMeasurements: Spacing,
-  all?: SpacingSize,
-  xAxis?: SpacingSize,
-  yAxis?: SpacingSize,
-  top?: SpacingSize,
-  right?: SpacingSize,
-  bottom?: SpacingSize,
-  left?: SpacingSize,
+  themePropertyMeasurements: Record<Spacing, string>,
+  all?: Spacing,
+  xAxis?: Spacing,
+  yAxis?: Spacing,
+  top?: Spacing,
+  right?: Spacing,
+  bottom?: Spacing,
+  left?: Spacing,
 ) => {
   const xAxisValue = xAxis && themePropertyMeasurements[xAxis];
   const yAxisValue = yAxis && themePropertyMeasurements[yAxis];

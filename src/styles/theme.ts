@@ -1,13 +1,4 @@
 import { DefaultTheme } from 'styled-components';
-import { Spacing } from './styled';
-
-const spacing: Spacing = {
-  xs: '4px',
-  sm: '8px',
-  md: '16px',
-  lg: '24px',
-  xl: '32px',
-};
 
 const theme: DefaultTheme = {
   colors: {
@@ -23,8 +14,26 @@ const theme: DefaultTheme = {
     semibold: 'Source-Sans-3-Semibold',
     bold: 'Source-Sans-3-Bold',
   },
-  paddings: spacing,
-  margins: spacing,
+  fontWeights: {
+    normal: '400',
+    semibold: '600',
+    bold: '700',
+  },
+  paddings: {
+    xs: '4px',
+    sm: '8px',
+    md: '16px',
+    lg: '24px',
+    xl: '32px',
+  },
+  margins: {
+    xs: '4px',
+    sm: '8px',
+    md: '16px',
+    lg: '24px',
+    xl: '32px',
+    auto: 'auto',
+  },
 };
 
 export default theme;

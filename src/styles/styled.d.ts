@@ -1,33 +1,27 @@
 import 'styled-components';
 
-export type Spacing = {
-  xs: string;
-  sm: string;
-  md: string;
-  lg: string;
-  xl: string;
-};
+export type Spacing = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
-export type SpacingSize = keyof Spacing;
+export type Colors =
+  | 'primary'
+  | 'secondary'
+  | 'black'
+  | 'white'
+  | 'danger'
+  | 'success';
 
-export type Colors = {
-  primary: string;
-  secondary: string;
-  black: string;
-  white: string;
-  danger: string;
-  success: string;
-};
+export type FontWeights = 'normal' | 'semibold' | 'bold';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    colors: Colors;
+    colors: Record<Colors, string>;
     fonts: {
       regular: string;
       semibold: string;
       bold: string;
     };
-    paddings: Spacing;
-    margins: Spacing;
+    fontWeights: Record<FontWeights, string>;
+    paddings: Record<Spacing, string>;
+    margins: Record<Spacing | 'auto', string>;
   }
 }

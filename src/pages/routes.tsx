@@ -1,19 +1,25 @@
 import { RouteObject } from 'react-router-dom';
-import HomePage from './home/home.page';
 import NotFoundPage from './not-found/not-found.page';
 import userRoutes from './user/user-routes';
+import App from '../app';
+import HomePage from './home/home.page';
 
-const basicRoutes: RouteObject[] = [
+const routes: RouteObject[] = [
   {
     path: '/',
-    element: <HomePage />,
-  },
-  {
-    path: '*',
-    element: <NotFoundPage />,
+    element: <App />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: '*',
+        element: <NotFoundPage />,
+      },
+      ...userRoutes,
+    ],
   },
 ];
-
-const routes = [...basicRoutes, ...userRoutes];
 
 export default routes;

@@ -4,7 +4,7 @@ import UserDetailsPage from './user-details.page';
 
 const userRoutes: RouteObject[] = [
   {
-    path: 'user',
+    path: 'users',
     children: [
       {
         index: true,
