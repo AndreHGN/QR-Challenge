@@ -19,6 +19,12 @@ const theme: DefaultTheme = {
     semibold: '600',
     bold: '700',
   },
+  fontSizes: {
+    tertiary: '8px',
+    secondary: '12px',
+    primary: '16px',
+    header: '32px',
+  },
   paddings: {
     xs: '4px',
     sm: '8px',
@@ -33,6 +39,13 @@ const theme: DefaultTheme = {
     lg: '24px',
     xl: '32px',
     auto: 'auto',
+  },
+  avatarSizes: {
+    xs: '24px',
+    sm: '32px',
+    md: '48px',
+    lg: '80px',
+    xl: '112px',
   },
 };
 
