@@ -6,15 +6,17 @@ import FieldStyled from './field.styled';
 interface FormTextFieldProps extends Omit<FieldAttributes<any>, 'type'> {
   name: string;
   label: string;
+  required?: boolean;
 }
 
 const FormDateField = ({
   name,
   label,
+  required,
   ...props
 }: FormTextFieldProps): React.ReactElement => {
   return (
-    <FieldWrapper name={name} label={label}>
+    <FieldWrapper required={required} name={name} label={label}>
       <FieldStyled width='auto' name={name} type='date' {...props} />
     </FieldWrapper>
   );

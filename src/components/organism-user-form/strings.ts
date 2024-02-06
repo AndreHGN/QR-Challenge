@@ -18,4 +18,10 @@ export const strings = {
       label: 'Cargo',
     },
   },
+  errors: {
+    required: 'Campo obrigatório',
+    email: 'Endereço de e-mail inválido',
+    cpf: 'CPF inválido',
+    date: 'Data inválida: não é possível incluir uma data futura',
+  },
 };

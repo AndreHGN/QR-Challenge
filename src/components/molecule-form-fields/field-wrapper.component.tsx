@@ -3,21 +3,26 @@ import InputLabel from '../atom-input-label/input-label.styled';
 import Layout from '../atom-layout/layout.styled';
 import InputErrorMessage from '../atom-input-error-message/input-error-message.component';
 
-interface FieldWrapperProps extends PropsWithChildren {
+export interface FieldWrapperProps extends PropsWithChildren {
   name: string;
   label?: string;
+  required?: boolean;
 }
 
 const FieldWrapper = ({
   name,
   label,
   children,
+  required,
 }: FieldWrapperProps): React.ReactElement => {
   return (
-    <Layout $mb='md'>
+    <Layout $mb='md' $display='block'>
       {label && (
         <Layout $mb='xs'>
-          <InputLabel>{label}</InputLabel>
+          <InputLabel>
+            {label}
+            {required && '*'}
+          </InputLabel>
         </Layout>
       )}
       {children}

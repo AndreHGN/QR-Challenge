@@ -9,6 +9,7 @@ import Button from '../atom-button/button.styled';
 import { readFileAsDataURL } from '../../utils/read-file';
 import Layout from '../atom-layout/layout.styled';
 import { strings } from './strings';
+import userValidationSchema from './form-validation';
 
 export interface UserFormData {
   name: string;
@@ -38,7 +39,11 @@ const UserForm = ({
   };
 
   return (
-    <Formik<UserFormData> initialValues={initialValues} {...props}>
+    <Formik<UserFormData>
+      initialValues={initialValues}
+      validationSchema={userValidationSchema}
+      {...props}
+    >
       {(props) => (
         <form onSubmit={props.handleSubmit}>
           <Layout $display='flex' $flexWrap='wrap'>
@@ -63,18 +68,25 @@ const UserForm = ({
                 name='name'
                 type='text'
                 label={strings.inputs.name.label}
+                required
               />
               <FormTextField
                 name='email'
                 type='text'
                 label={strings.inputs.email.label}
+                required
               />
               <FormCpfField name='cpf' label={strings.inputs.cpf.label} />
-              <FormDateField name='date' label={strings.inputs.date.label} />
+              <FormDateField
+                name='date'
+                label={strings.inputs.date.label}
+                required
+              />
               <FormTextField
                 name='jobTitle'
                 type='text'
                 label={strings.inputs.jobTitle.label}
+                required
               />
               <Layout $display='flex' $justifyContent='flex-end'>
                 <Button action='primary' type='submit'>

@@ -7,12 +7,14 @@ import { formatCpf } from '../../utils/cpf-formatter';
 interface FormCpfFieldProps extends Omit<FieldAttributes<any>, 'type'> {
   name: string;
   label: string;
+  required?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const FormCpfField = ({
   name,
   label,
+  required,
   onChange,
   ...props
 }: FormCpfFieldProps): React.ReactElement => {
@@ -30,7 +32,7 @@ const FormCpfField = ({
   };
 
   return (
-    <FieldWrapper name={name} label={label}>
+    <FieldWrapper required={required} name={name} label={label}>
       <FieldStyled
         name={name}
         type='text'

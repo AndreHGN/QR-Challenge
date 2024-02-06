@@ -9,16 +9,18 @@ interface FormTextFieldProps extends FieldAttributes<any> {
   name: string;
   type?: TextFieldType;
   label?: string;
+  required?: boolean;
 }
 
 const FormTextField = ({
   name,
   type,
   label,
+  required,
   ...props
 }: FormTextFieldProps): React.ReactElement => {
   return (
-    <FieldWrapper name={name} label={label}>
+    <FieldWrapper required={required} name={name} label={label}>
       <FieldStyled name={name} type={type || 'text'} {...props} />
     </FieldWrapper>
   );

@@ -8,7 +8,11 @@ interface InputErrorMessageProps {
 const InputErrorMessage = ({
   name,
 }: InputErrorMessageProps): React.ReactElement => {
-  return <ErrorMessage name={name} component={ErrorMessageStyled} />;
+  return (
+    <div>
+      <ErrorMessage name={name} component={ErrorMessageStyled} />
+    </div>
+  );
 };
 
 export default InputErrorMessage;

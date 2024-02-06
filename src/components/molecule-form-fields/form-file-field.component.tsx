@@ -9,6 +9,7 @@ interface FormFileFieldProps extends Omit<FieldAttributes<any>, 'type'> {
   name: string;
   label?: string;
   accept?: string;
+  required?: boolean;
   onFileChange?: (file: File) => void;
 }
 
@@ -16,6 +17,7 @@ const FormFileField = ({
   name,
   label,
   accept,
+  required,
   onFileChange,
   ...props
 }: FormFileFieldProps): React.ReactElement => {
@@ -36,7 +38,7 @@ const FormFileField = ({
   };
 
   return (
-    <FieldWrapper name={name}>
+    <FieldWrapper required={required} name={name}>
       <FileFieldStyled
         innerRef={ref}
         name={name}
