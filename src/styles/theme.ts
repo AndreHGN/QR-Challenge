@@ -7,7 +7,7 @@ const theme: DefaultTheme = {
     black: '#272727',
     white: '#F7F7F7',
     danger: '#CC2936',
-    success: '#97D8C4',
+    success: '#007c4b',
   },
   fonts: {
     regular: 'Source-Sans-3',
@@ -31,6 +31,7 @@ const theme: DefaultTheme = {
     md: '16px',
     lg: '24px',
     xl: '32px',
+    xxl: '48px',
   },
   margins: {
     xs: '4px',
@@ -38,7 +39,7 @@ const theme: DefaultTheme = {
     md: '16px',
     lg: '24px',
     xl: '32px',
-    auto: 'auto',
+    xxl: '48px',
   },
   avatarSizes: {
     xs: '24px',

@@ -10,7 +10,7 @@ const App = () => {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Navbar title='GestãoRH' />
+        <Navbar />
         <PageWrapper>
           <Outlet />
         </PageWrapper>
