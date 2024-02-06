@@ -27,7 +27,10 @@ export interface LayoutProps extends MarginProps, PaddingProps {
   $alignItems?: Property.AlignItems;
   $justifyContent?: Property.JustifyContent;
   $flex?: Property.Flex;
+  $flexDirection?: Property.FlexDirection;
+  $flexWrap?: Property.FlexWrap;
   $gap?: Property.Gap;
+  $width?: string;
 }
 
 const Layout = styled.div<LayoutProps>`
@@ -63,7 +66,10 @@ const Layout = styled.div<LayoutProps>`
       align-items: ${props.$alignItems};
       justify-content: ${props.$justifyContent};
       flex: ${props.$flex};
+      flex-direction: ${props.$flexDirection};
+      flex-wrap: ${props.$flexWrap || 'nowrap'};
       gap: ${props.$gap};
+      width: ${props.$width};
     `;
   }}
 `;

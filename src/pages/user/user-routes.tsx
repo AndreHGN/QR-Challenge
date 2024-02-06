@@ -1,6 +1,7 @@
 import { RouteObject } from 'react-router-dom';
 import UserListPage from './user-list.page';
 import UserDetailsPage from './user-details.page';
+import AddUserPage from './add-user.page';
 
 const userRoutes: RouteObject[] = [
   {
@@ -13,6 +14,10 @@ const userRoutes: RouteObject[] = [
       {
         path: ':id',
         element: <UserDetailsPage />,
+      },
+      {
+        path: 'add',
+        element: <AddUserPage />,
       },
     ],
   },

@@ -7,7 +7,7 @@ const theme: DefaultTheme = {
     black: '#272727',
     white: '#F7F7F7',
     danger: '#CC2936',
-    success: '#97D8C4',
+    success: '#007c4b',
   },
   fonts: {
     regular: 'Source-Sans-3',
@@ -19,12 +19,19 @@ const theme: DefaultTheme = {
     semibold: '600',
     bold: '700',
   },
+  fontSizes: {
+    tertiary: '8px',
+    secondary: '12px',
+    primary: '16px',
+    header: '32px',
+  },
   paddings: {
     xs: '4px',
     sm: '8px',
     md: '16px',
     lg: '24px',
     xl: '32px',
+    xxl: '48px',
   },
   margins: {
     xs: '4px',
@@ -32,7 +39,14 @@ const theme: DefaultTheme = {
     md: '16px',
     lg: '24px',
     xl: '32px',
-    auto: 'auto',
+    xxl: '48px',
+  },
+  avatarSizes: {
+    xs: '24px',
+    sm: '32px',
+    md: '48px',
+    lg: '80px',
+    xl: '112px',
   },
 };
 

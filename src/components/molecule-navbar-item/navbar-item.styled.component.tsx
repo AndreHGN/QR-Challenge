@@ -5,7 +5,7 @@ const NavbarItemStyled = styled.li`
   height: 100%;
   font-weight: ${({ theme }) => theme.fontWeights.semibold};
 
-  :hover {
+  &:hover {
     background-color: ${({ theme }) => theme.colors.secondary};
   }
 `;

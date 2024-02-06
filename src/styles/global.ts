@@ -8,13 +8,13 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: ${({ theme }) => `${theme.fonts.regular}, ${theme.fonts.semibold}, ${theme.fonts.bold}, sans-serif`};
   }
 
   body {
     margin: 0;
     padding: 0;
     background-color: ${({ theme }) => theme.colors.white};
-    font-family: ${({ theme }) => `${theme.fonts.regular}, ${theme.fonts.semibold}, ${theme.fonts.bold}, sans-serif`};
     color: ${({ theme }) => theme.colors.black};
   }
 `;

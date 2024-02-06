@@ -4,7 +4,9 @@ import type { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import EsLintPlugin from 'eslint-webpack-plugin';
 
-type ConfigurationAndDevServer = Configuration & { devServer: DevServerConfiguration };
+type ConfigurationAndDevServer = Configuration & {
+  devServer: DevServerConfiguration;
+};
 
 const config: ConfigurationAndDevServer = {
   mode: 'development',
@@ -22,7 +24,7 @@ const config: ConfigurationAndDevServer = {
         exclude: /node_modules/,
       },
       {
-        test: /\.ttf/,
+        test: /\.(ttf|png|jpeg|jpg|svg)/,
         type: 'asset/resource',
       },
     ],

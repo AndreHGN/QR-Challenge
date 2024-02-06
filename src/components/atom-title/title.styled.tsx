@@ -7,6 +7,7 @@ interface TitleProps {
 
 const Title = styled.h1<TitleProps>`
   color: ${({ color, theme }) => (color ? theme.colors[color] : 'inherit')};
+  font-size: ${({ theme }) => theme.fontSizes.header};
 `;
 
 export default Title;
