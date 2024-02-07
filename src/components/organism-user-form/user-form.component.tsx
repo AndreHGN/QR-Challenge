@@ -10,7 +10,7 @@ import { readFileAsDataURL } from '../../utils/read-file';
 import Layout from '../atom-layout/layout.styled';
 import { strings } from './strings';
 import userValidationSchema from './form-validation';
-import { UserInput } from '../../pages/user/requests/add-user.request';
+import { UserDetailsRequestInput } from '../../pages/user/request-type';
 
 export interface UserFormData {
   name: string;
@@ -22,7 +22,7 @@ export interface UserFormData {
 }
 
 interface UserFormProps extends Omit<FormikConfig<UserFormData>, 'onSubmit'> {
-  onAddUser: (user: UserInput) => void;
+  onAddUser: (user: UserDetailsRequestInput) => void;
   loading: boolean;
 }
 
@@ -47,7 +47,7 @@ const UserForm = ({
   };
 
   const handleSubmit = (formValues: UserFormData) => {
-    const userInput: UserInput = {
+    const UserDetailsRequestInput: UserDetailsRequestInput = {
       user: {
         name: formValues.name,
         email: formValues.email,
@@ -57,7 +57,7 @@ const UserForm = ({
       },
     };
 
-    onAddUser(userInput);
+    onAddUser(UserDetailsRequestInput);
   };
 
   return (
@@ -92,24 +92,32 @@ const UserForm = ({
                 type='text'
                 label={strings.inputs.name.label}
                 required
+                marginBottom
               />
               <FormTextField
                 name='email'
                 type='text'
                 label={strings.inputs.email.label}
                 required
+                marginBottom
               />
-              <FormCpfField name='cpf' label={strings.inputs.cpf.label} />
+              <FormCpfField
+                name='cpf'
+                label={strings.inputs.cpf.label}
+                marginBottom
+              />
               <FormDateField
                 name='date'
                 label={strings.inputs.date.label}
                 required
+                marginBottom
               />
               <FormTextField
                 name='jobTitle'
                 type='text'
                 label={strings.inputs.jobTitle.label}
                 required
+                marginBottom
               />
               <Layout $display='flex' $justifyContent='flex-end'>
                 <Button action='primary' type='submit' loading={loading}>

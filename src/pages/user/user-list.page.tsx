@@ -1,15 +1,23 @@
 import React from 'react';
 import { useAxios } from '../../hooks/use-axios';
+import UserListTemplate from '../../components/template-user-list/user-list.template';
+import { UserListResponse, Users } from './request-type';
 
 const UserListPage = (): React.ReactElement => {
-  const { response, error, loading } = useAxios({
+  const { response, error, loading } = useAxios<undefined, UserListResponse>({
     method: 'GET',
     url: '/api/v1/users',
   });
 
-  console.log(response);
+  if (error) {
+    console.log(error);
+  }
 
-  return <div>User list</div>;
+  const userListData = response?.users;
+
+  return (
+    <UserListTemplate userListData={userListData as Users} loading={loading} />
+  );
 };
 
 export default UserListPage;
