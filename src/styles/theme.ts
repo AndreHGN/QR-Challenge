@@ -5,6 +5,9 @@ const theme: DefaultTheme = {
     primary: '#4059AD',
     secondary: '#6B9AC4',
     black: '#272727',
+    darkGray: '#787878',
+    gray: '#acacac',
+    lightGray: '#e0e0e0',
     white: '#F7F7F7',
     danger: '#CC2936',
     success: '#007c4b',
@@ -20,8 +23,8 @@ const theme: DefaultTheme = {
     bold: '700',
   },
   fontSizes: {
-    tertiary: '8px',
-    secondary: '12px',
+    tertiary: '12px',
+    secondary: '14px',
     primary: '16px',
     header: '32px',
   },
@@ -40,6 +43,7 @@ const theme: DefaultTheme = {
     lg: '24px',
     xl: '32px',
     xxl: '48px',
+    auto: 'auto',
   },
   avatarSizes: {
     xs: '24px',
@@ -47,6 +51,13 @@ const theme: DefaultTheme = {
     md: '48px',
     lg: '80px',
     xl: '112px',
+  },
+  iconSizes: {
+    xs: '8px',
+    sm: '16px',
+    md: '32px',
+    lg: '48px',
+    xl: '60px',
   },
 };
 

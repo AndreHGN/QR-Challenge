@@ -2,10 +2,15 @@ import 'styled-components';
 
 export type Spacing = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
+export type SpacingWithAuto = Spacing | 'auto';
+
 export type Colors =
   | 'primary'
   | 'secondary'
   | 'black'
+  | 'darkGray'
+  | 'gray'
+  | 'lightGray'
   | 'white'
   | 'danger'
   | 'success';
@@ -22,6 +27,8 @@ export type ButtonSizes = 'sm' | 'md' | 'lg';
 
 export type SpinnerSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
+export type IconSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
 declare module 'styled-components' {
   export interface DefaultTheme {
     colors: Record<Colors, string>;
@@ -33,7 +40,8 @@ declare module 'styled-components' {
     fontWeights: Record<FontWeights, string>;
     fontSizes: Record<FontSizes, string>;
     paddings: Record<Spacing, string>;
-    margins: Record<Spacing, string>;
+    margins: Record<SpacingWithAuto, string>;
     avatarSizes: Record<AvatarSizes, string>;
+    iconSizes: Record<IconSizes, string>;
   }
 }

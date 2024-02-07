@@ -1,15 +1,15 @@
 import { css, styled } from 'styled-components';
 import { Property } from 'csstype';
-import { Spacing } from '../../styles/styled';
+import { Spacing, SpacingWithAuto } from '../../styles/styled';
 
 export interface MarginProps {
-  $m?: Spacing;
-  $mx?: Spacing;
-  $my?: Spacing;
-  $mt?: Spacing;
-  $mr?: Spacing;
-  $mb?: Spacing;
-  $ml?: Spacing;
+  $m?: SpacingWithAuto;
+  $mx?: SpacingWithAuto;
+  $my?: SpacingWithAuto;
+  $mt?: SpacingWithAuto;
+  $mr?: SpacingWithAuto;
+  $mb?: SpacingWithAuto;
+  $ml?: SpacingWithAuto;
 }
 
 export interface PaddingProps {
@@ -75,14 +75,14 @@ const Layout = styled.div<LayoutProps>`
 `;
 
 const defineSpacingValues = (
-  themePropertyMeasurements: Record<Spacing, string>,
-  all?: Spacing,
-  xAxis?: Spacing,
-  yAxis?: Spacing,
-  top?: Spacing,
-  right?: Spacing,
-  bottom?: Spacing,
-  left?: Spacing,
+  themePropertyMeasurements: Record<string, string>,
+  all?: string,
+  xAxis?: string,
+  yAxis?: string,
+  top?: string,
+  right?: string,
+  bottom?: string,
+  left?: string,
 ) => {
   const xAxisValue = xAxis && themePropertyMeasurements[xAxis];
   const yAxisValue = yAxis && themePropertyMeasurements[yAxis];

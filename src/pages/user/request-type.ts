@@ -1,6 +1,4 @@
-import { useAxios } from '../../../hooks/use-axios';
-
-export type UserOutput = {
+export type User = {
   id: string;
   name: string;
   email: string;
@@ -11,7 +9,11 @@ export type UserOutput = {
   updated_at: string;
 };
 
-export type UserInput = {
+export type UserDetailsResponse = {
+  user: User;
+};
+
+export type UserDetailsRequestInput = {
   user: {
     name: string;
     email: string;
@@ -21,10 +23,8 @@ export type UserInput = {
   };
 };
 
-export const useAddUserRequest = (user: UserInput) => {
-  return useAxios<UserInput, UserOutput>({
-    method: 'POST',
-    url: '/api/v1/users',
-    data: user,
-  });
+export type Users = User[];
+
+export type UserListResponse = {
+  users: Users;
 };

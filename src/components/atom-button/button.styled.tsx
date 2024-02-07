@@ -45,10 +45,45 @@ const mapButtonActionToColors = (theme: DefaultTheme) => {
   return colorStyles;
 };
 
-const ButtonStyled = styled.button<ButtonStyledProps>`
-  padding: ${({ theme }) => `${theme.paddings.sm} ${theme.paddings.md}`};
+export const hightlightOnHoverStyles = (borderStyles: RuleSet) => {
+  return css`
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 0;
+      content: '';
+      ${borderStyles}
+    }
+
+    &:hover:enabled::before {
+      background-color: currentColor;
+      opacity: 0.2;
+    }
+  `;
+};
+
+export const disabledButtonStyles = css`
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+`;
+
+const buttonBorderStyles = css`
   border: 1px solid;
   border-radius: 8px;
+`;
+
+const ButtonStyled = styled.button<ButtonStyledProps>`
+  ${({ action, theme }) => mapButtonActionToColors(theme)[action]};
+  ${hightlightOnHoverStyles(buttonBorderStyles)}
+  ${disabledButtonStyles}
+  ${buttonBorderStyles}
+
+  padding: ${({ theme }) => `${theme.paddings.sm} ${theme.paddings.md}`};
   width: ${({ width }) => width || 'auto'};
   cursor: pointer;
   position: relative;
@@ -58,34 +93,6 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
 
   font-size: ${({ size, theme }) =>
     size ? mapButtonSizeToFontSize(theme)[size] : theme.fontSizes.primary};
-
-  ${({ action, theme }) => mapButtonActionToColors(theme)[action]};
-
-  &::before {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    opacity: 0;
-    content: ' ';
-  }
-
-  &:hover::before {
-    background-color: currentColor;
-    opacity: 0.2;
-  }
-
-  &:disabled {
-    opacity: 0.8;
-    cursor: not-allowed;
-  }
-
-  &:disabled::before {
-    background-color: ${({ theme }) => theme.colors.black};
-    opacity: 0.1;
-    cursor: not-allowed;
-  }
 `;
 
 export default ButtonStyled;

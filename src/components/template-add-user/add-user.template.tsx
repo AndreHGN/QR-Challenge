@@ -1,4 +1,4 @@
-import { UserInput } from '../../pages/user/requests/add-user.request';
+import { UserDetailsRequestInput } from '../../pages/user/request-type';
 import Layout from '../atom-layout/layout.styled';
 import Title from '../atom-title/title.styled';
 import UserForm, {
@@ -7,7 +7,7 @@ import UserForm, {
 import { strings } from './strings';
 
 interface AddUserTemplateProps {
-  onAddUser: (user: UserInput) => void;
+  onAddUser: (user: UserDetailsRequestInput) => void;
   loading: boolean;
 }
 
@@ -26,7 +26,7 @@ const AddUserTemplate = ({
 
   return (
     <>
-      <Layout $mb='lg'>
+      <Layout $mb='xl'>
         <Title>{strings.pageTitle}</Title>
       </Layout>
       <UserForm

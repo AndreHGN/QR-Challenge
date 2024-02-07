@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AddUserTemplate from '../../components/template-add-user/add-user.template';
-import { UserInput } from './requests/add-user.request';
 import axios from 'axios';
+import { UserDetailsRequestInput } from './request-type';
 
 const AddUserPage = (): React.ReactElement => {
   const [error, setError] = useState<Error>();
@@ -10,7 +10,7 @@ const AddUserPage = (): React.ReactElement => {
 
   const navigate = useNavigate();
 
-  const handleAddUser = (user: UserInput) => {
+  const handleAddUser = (user: UserDetailsRequestInput) => {
     setLoading(true);
     axios
       .request({
