@@ -16,7 +16,7 @@ const FieldWrapper = ({
   required,
 }: FieldWrapperProps): React.ReactElement => {
   return (
-    <Layout $mb='md' $display='block'>
+    <Layout $mb='md'>
       {label && (
         <Layout $mb='xs'>
           <InputLabel>

@@ -7,6 +7,7 @@ interface ButtonProps {
   size?: ButtonSizes;
   width?: string;
   fontWeight?: FontWeights;
+  loading?: boolean;
 }
 
 const mapButtonSizeToFontSize = (theme: DefaultTheme) => {
@@ -73,6 +74,16 @@ const Button = styled.button<ButtonProps>`
   &:hover::before {
     background-color: currentColor;
     opacity: 0.2;
+  }
+
+  &:disabled {
+    opacity: 0.8;
+  }
+
+  &:disabled::before {
+    background-color: ${({ theme }) => theme.colors.black};
+    opacity: 0.1;
+    cursor: not-allowed;
   }
 `;
 

@@ -10,6 +10,7 @@ import { readFileAsDataURL } from '../../utils/read-file';
 import Layout from '../atom-layout/layout.styled';
 import { strings } from './strings';
 import userValidationSchema from './form-validation';
+import { UserInput } from '../../pages/user/requests/add-user.request';
 
 export interface UserFormData {
   name: string;
@@ -20,27 +21,49 @@ export interface UserFormData {
   avatar: string | undefined;
 }
 
-interface UserFormProps extends FormikConfig<UserFormData> {}
+interface UserFormProps extends Omit<FormikConfig<UserFormData>, 'onSubmit'> {
+  onAddUser: (user: UserInput) => void;
+  loading: boolean;
+}
 
 const UserForm = ({
   initialValues,
+  onAddUser,
+  loading,
   ...props
 }: UserFormProps): React.ReactElement => {
-  const [image, setImage] = useState<string | undefined>(initialValues.avatar);
+  const [imageUrl, setImageUrl] = useState<string | undefined>(
+    initialValues.avatar,
+  );
 
   const handleAvatarChange = (file: File) => {
     readFileAsDataURL(file)
       .then((result) => {
-        setImage(result);
+        setImageUrl(result);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
+  const handleSubmit = (formValues: UserFormData) => {
+    const userInput: UserInput = {
+      user: {
+        name: formValues.name,
+        email: formValues.email,
+        admission_date: formValues.date,
+        job_title: formValues.jobTitle,
+        photo_url: imageUrl,
+      },
+    };
+
+    onAddUser(userInput);
+  };
+
   return (
     <Formik<UserFormData>
       initialValues={initialValues}
+      onSubmit={handleSubmit}
       validationSchema={userValidationSchema}
       {...props}
     >
@@ -54,12 +77,12 @@ const UserForm = ({
               $alignItems='center'
             >
               <Layout $mb='md'>
-                <Avatar img={image} size='xl' />
+                <Avatar img={imageUrl} size='xl' />
               </Layout>
               <FormFileField
                 name='avatar'
                 onFileChange={handleAvatarChange}
-                accept='image/*'
+                accept='imageUrl/*'
                 label={strings.avatarButton}
               />
             </Layout>
@@ -89,8 +112,8 @@ const UserForm = ({
                 required
               />
               <Layout $display='flex' $justifyContent='flex-end'>
-                <Button action='primary' type='submit'>
-                  {strings.submitButton}
+                <Button action='primary' type='submit' disabled={loading}>
+                  {loading ? 'Loading...' : strings.submitButton}
                 </Button>
               </Layout>
             </Layout>
