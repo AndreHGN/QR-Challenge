@@ -92,24 +92,32 @@ const UserForm = ({
                 type='text'
                 label={strings.inputs.name.label}
                 required
+                marginBottom
               />
               <FormTextField
                 name='email'
                 type='text'
                 label={strings.inputs.email.label}
                 required
+                marginBottom
               />
-              <FormCpfField name='cpf' label={strings.inputs.cpf.label} />
+              <FormCpfField
+                name='cpf'
+                label={strings.inputs.cpf.label}
+                marginBottom
+              />
               <FormDateField
                 name='date'
                 label={strings.inputs.date.label}
                 required
+                marginBottom
               />
               <FormTextField
                 name='jobTitle'
                 type='text'
                 label={strings.inputs.jobTitle.label}
                 required
+                marginBottom
               />
               <Layout $display='flex' $justifyContent='flex-end'>
                 <Button action='primary' type='submit' loading={loading}>

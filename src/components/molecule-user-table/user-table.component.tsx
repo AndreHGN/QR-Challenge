@@ -37,7 +37,7 @@ const UserTable = ({ userListData }: UserTableProps): React.ReactElement => {
         <IconButton
           $noBorder
           $circularButton
-          iconType='trash'
+          iconType='remove'
           color='black'
           size='sm'
           onClick={() => console.log(`delete ${row.name}`)}

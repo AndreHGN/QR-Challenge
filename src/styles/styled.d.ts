@@ -1,6 +1,6 @@
 import 'styled-components';
 
-export type Spacing = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+export type Spacing = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
 
 export type SpacingWithAuto = Spacing | 'auto';
 

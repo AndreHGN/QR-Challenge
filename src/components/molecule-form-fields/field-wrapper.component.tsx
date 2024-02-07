@@ -7,6 +7,15 @@ export interface FieldWrapperProps extends PropsWithChildren {
   name: string;
   label?: string;
   required?: boolean;
+  marginBottom?: boolean;
+}
+
+export interface CommonFieldProps {
+  name: string;
+  label?: string;
+  required?: boolean;
+  marginBottom?: boolean;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const FieldWrapper = ({
@@ -14,9 +23,10 @@ const FieldWrapper = ({
   label,
   children,
   required,
+  marginBottom,
 }: FieldWrapperProps): React.ReactElement => {
   return (
-    <Layout $mb='md'>
+    <Layout $mb={marginBottom ? 'md' : undefined}>
       {label && (
         <Layout $mb='xs'>
           <InputLabel>

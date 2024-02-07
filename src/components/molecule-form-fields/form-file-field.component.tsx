@@ -1,15 +1,14 @@
 import { useRef } from 'react';
 import { FieldAttributes } from 'formik';
-import FieldWrapper from './field-wrapper.component';
+import FieldWrapper, { CommonFieldProps } from './field-wrapper.component';
 import { FileFieldStyled } from './field.styled';
 import Button from '../atom-button/button.styled';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-interface FormFileFieldProps extends Omit<FieldAttributes<any>, 'type'> {
-  name: string;
-  label?: string;
+interface FormFileFieldProps
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  extends Omit<FieldAttributes<any>, 'type'>,
+    CommonFieldProps {
   accept?: string;
-  required?: boolean;
   onFileChange?: (file: File) => void;
 }
 

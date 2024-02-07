@@ -1,15 +1,12 @@
 import { FieldAttributes } from 'formik';
-import FieldWrapper from './field-wrapper.component';
+import FieldWrapper, { CommonFieldProps } from './field-wrapper.component';
 import FieldStyled from './field.styled';
 
 type TextFieldType = 'email' | 'password' | 'text';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-interface FormTextFieldProps extends FieldAttributes<any> {
-  name: string;
+interface FormTextFieldProps extends FieldAttributes<any>, CommonFieldProps {
   type?: TextFieldType;
-  label?: string;
-  required?: boolean;
 }
 
 const FormTextField = ({
@@ -17,10 +14,16 @@ const FormTextField = ({
   type,
   label,
   required,
+  marginBottom,
   ...props
 }: FormTextFieldProps): React.ReactElement => {
   return (
-    <FieldWrapper required={required} name={name} label={label}>
+    <FieldWrapper
+      required={required}
+      name={name}
+      label={label}
+      marginBottom={marginBottom}
+    >
       <FieldStyled name={name} type={type || 'text'} {...props} />
     </FieldWrapper>
   );

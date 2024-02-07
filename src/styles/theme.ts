@@ -35,6 +35,7 @@ const theme: DefaultTheme = {
     lg: '24px',
     xl: '32px',
     xxl: '48px',
+    xxxl: '64px',
   },
   margins: {
     xs: '4px',
@@ -43,6 +44,7 @@ const theme: DefaultTheme = {
     lg: '24px',
     xl: '32px',
     xxl: '48px',
+    xxxl: '64px',
     auto: 'auto',
   },
   avatarSizes: {

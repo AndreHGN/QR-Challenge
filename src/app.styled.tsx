@@ -3,7 +3,7 @@ import { device } from './styles/breakpoints';
 
 const PageWrapper = styled.div`
   padding: ${({ theme }) =>
-    `${theme.paddings.md} ${theme.paddings.md} ${theme.paddings.xxl}`};
+    `${theme.paddings.xl} ${theme.paddings.md} ${theme.paddings.xxxl}`};
   margin: 0 auto;
 
   @media ${device.xs} {

@@ -1,12 +1,12 @@
-import { IconBaseProps } from 'react-icons';
-import { AiFillDelete } from 'react-icons/ai';
+import { IconBaseProps, IconType } from 'react-icons';
+import { AiOutlineClose } from 'react-icons/ai';
 import { Colors, IconSizes } from '../../styles/styled';
 import { useTheme } from 'styled-components';
 
-export type IconTypes = 'trash';
+export type IconTypes = 'remove';
 
-const getIcon = {
-  trash: AiFillDelete,
+const getIcon: Record<IconTypes, IconType> = {
+  remove: AiOutlineClose,
 };
 
 export interface IconProps extends IconBaseProps {
