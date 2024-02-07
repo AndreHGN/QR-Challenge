@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 axios.defaults.baseURL = 'https://qr-challenge.herokuapp.com';
 
@@ -31,15 +31,4 @@ export const useAxios = <D = any, R = any>(
   }, []);
 
   return { response, error, loading };
-};
-
-export const useAxiosCallback = <D = any, R = any>(): ((
-  params: AxiosRequestConfig<D>,
-) => Promise<AxiosResponse<R>>) => {
-  const axiosCallback = useCallback(
-    (params: AxiosRequestConfig<D>) => axios.request(params),
-    [],
-  );
-
-  return axiosCallback;
 };

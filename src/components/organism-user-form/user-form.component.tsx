@@ -5,7 +5,7 @@ import FormTextField from '../molecule-form-fields/form-text-field.component';
 import FormFileField from '../molecule-form-fields/form-file-field.component';
 import FormCpfField from '../molecule-form-fields/form-cpf-field.component';
 import FormDateField from '../molecule-form-fields/form-date-field.component';
-import Button from '../atom-button/button.styled';
+import Button from '../atom-button/button.component';
 import { readFileAsDataURL } from '../../utils/read-file';
 import Layout from '../atom-layout/layout.styled';
 import { strings } from './strings';
@@ -112,8 +112,8 @@ const UserForm = ({
                 required
               />
               <Layout $display='flex' $justifyContent='flex-end'>
-                <Button action='primary' type='submit' disabled={loading}>
-                  {loading ? 'Loading...' : strings.submitButton}
+                <Button action='primary' type='submit' loading={loading}>
+                  {strings.submitButton}
                 </Button>
               </Layout>
             </Layout>

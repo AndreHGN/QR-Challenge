@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { ButtonSizes, ButtonActions, FontWeights } from '../../styles/styled';
 import { DefaultTheme, RuleSet } from 'styled-components/dist/types';
 
-interface ButtonProps {
+export interface ButtonStyledProps {
   action: ButtonActions;
   size?: ButtonSizes;
   width?: string;
@@ -10,7 +10,7 @@ interface ButtonProps {
   loading?: boolean;
 }
 
-const mapButtonSizeToFontSize = (theme: DefaultTheme) => {
+export const mapButtonSizeToFontSize = (theme: DefaultTheme) => {
   return {
     sm: theme.fontSizes.secondary,
     md: theme.fontSizes.primary,
@@ -45,7 +45,7 @@ const mapButtonActionToColors = (theme: DefaultTheme) => {
   return colorStyles;
 };
 
-const Button = styled.button<ButtonProps>`
+const ButtonStyled = styled.button<ButtonStyledProps>`
   padding: ${({ theme }) => `${theme.paddings.sm} ${theme.paddings.md}`};
   border: 1px solid;
   border-radius: 8px;
@@ -78,6 +78,7 @@ const Button = styled.button<ButtonProps>`
 
   &:disabled {
     opacity: 0.8;
+    cursor: not-allowed;
   }
 
   &:disabled::before {
@@ -87,4 +88,4 @@ const Button = styled.button<ButtonProps>`
   }
 `;
 
-export default Button;
+export default ButtonStyled;

@@ -20,6 +20,8 @@ export type ButtonActions = 'primary' | 'secondary' | 'danger' | 'success';
 
 export type ButtonSizes = 'sm' | 'md' | 'lg';
 
+export type SpinnerSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
 declare module 'styled-components' {
   export interface DefaultTheme {
     colors: Record<Colors, string>;

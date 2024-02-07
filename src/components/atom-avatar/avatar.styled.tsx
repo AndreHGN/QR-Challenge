@@ -13,6 +13,7 @@ const AvatarStyled = styled.img<AvatarStyledProps>`
       width: ${sizeValue};
       height: ${sizeValue};
       border-radius: 50%;
+      object-fit: cover;
     `;
   }}
 `;
