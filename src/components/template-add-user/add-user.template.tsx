@@ -1,3 +1,4 @@
+import { UserInput } from '../../pages/user/requests/add-user.request';
 import Layout from '../atom-layout/layout.styled';
 import Title from '../atom-title/title.styled';
 import UserForm, {
@@ -5,7 +6,15 @@ import UserForm, {
 } from '../organism-user-form/user-form.component';
 import { strings } from './strings';
 
-const AddUserTemplate = (): React.ReactElement => {
+interface AddUserTemplateProps {
+  onAddUser: (user: UserInput) => void;
+  loading: boolean;
+}
+
+const AddUserTemplate = ({
+  onAddUser,
+  loading,
+}: AddUserTemplateProps): React.ReactElement => {
   const initialValues: UserFormData = {
     name: '',
     email: '',
@@ -22,7 +31,8 @@ const AddUserTemplate = (): React.ReactElement => {
       </Layout>
       <UserForm
         initialValues={initialValues}
-        onSubmit={(result) => console.log(result)}
+        onAddUser={onAddUser}
+        loading={loading}
       />
     </>
   );
