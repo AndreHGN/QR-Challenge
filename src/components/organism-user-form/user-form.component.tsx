@@ -63,6 +63,7 @@ const UserForm = ({
         onFileChange={handleAvatarChange}
         accept='imageUrl/*'
         label={strings.avatarButton}
+        dataTestId='avatarInput'
       />
     </Layout>
   );
@@ -75,6 +76,7 @@ const UserForm = ({
         label={strings.inputs.name.label}
         required
         marginBottom
+        dataTestId='nameInput'
       />
       <FormTextField
         name='email'
@@ -82,6 +84,7 @@ const UserForm = ({
         label={strings.inputs.email.label}
         required
         marginBottom
+        dataTestId='emailInput'
       />
       <FormCpfField name='cpf' label={strings.inputs.cpf.label} marginBottom />
       <FormDateField
@@ -89,6 +92,7 @@ const UserForm = ({
         label={strings.inputs.date.label}
         required
         marginBottom
+        dataTestId='dateInput'
       />
       <FormTextField
         name='jobTitle'
@@ -96,6 +100,7 @@ const UserForm = ({
         label={strings.inputs.jobTitle.label}
         required
         marginBottom
+        dataTestId='jobTitleInput'
       />
     </>
   );

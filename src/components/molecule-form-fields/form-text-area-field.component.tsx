@@ -12,6 +12,7 @@ const FormTextAreaField = ({
   label,
   required,
   marginBottom,
+  dataTestId,
   ...props
 }: FormTextFieldProps): React.ReactElement => {
   const [field, meta] = useField<string>({ type: 'text', name, ...props });
@@ -27,6 +28,7 @@ const FormTextAreaField = ({
         name={name}
         value={meta.value}
         onChange={field.onChange}
+        data-testid={dataTestId}
       />
     </FieldWrapper>
   );

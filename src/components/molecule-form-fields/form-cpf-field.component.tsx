@@ -14,6 +14,7 @@ const FormCpfField = ({
   required,
   marginBottom,
   onChange,
+  dataTestId,
   ...props
 }: FormCpfFieldProps): React.ReactElement => {
   const { setFieldValue } = useFormikContext();
@@ -41,6 +42,7 @@ const FormCpfField = ({
         type='text'
         onChange={handleChange}
         maxLength={14}
+        data-testid={dataTestId}
         {...props}
       />
     </FieldWrapper>

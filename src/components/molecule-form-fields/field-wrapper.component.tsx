@@ -16,6 +16,7 @@ export interface CommonFieldProps {
   required?: boolean;
   marginBottom?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  dataTestId?: string;
 }
 
 const FieldWrapper = ({
