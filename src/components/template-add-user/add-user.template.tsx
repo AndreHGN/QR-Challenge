@@ -31,7 +31,7 @@ const AddUserTemplate = ({
       <UserForm
         initialValues={initialValues}
         onSaveUserData={onAddUser}
-        loading={loading}
+        isSaveLoading={loading}
       />
     </>
   );

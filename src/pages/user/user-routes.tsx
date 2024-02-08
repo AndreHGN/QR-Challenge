@@ -1,7 +1,7 @@
 import { RouteObject } from 'react-router-dom';
-import UserListPage from './user-list.page';
-import UserDetailsPage from './user-details.page';
-import AddUserPage from './add-user.page';
+import UserListPage from './user-list/user-list.page';
+import UserDetailsPage from './user-details/user-details.page';
+import AddUserPage from './add-user/add-user.page';
 
 const userRoutes: RouteObject[] = [
   {

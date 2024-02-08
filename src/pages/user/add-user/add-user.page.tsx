@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AddUserTemplate from '../../components/template-add-user/add-user.template';
+import AddUserTemplate from '../../../components/template-add-user/add-user.template';
 import axios from 'axios';
-import { UserDetailsRequestInput } from './request-types';
-import { UserFormData } from '../../components/organism-user-form/user-form.component';
+import { UserDetailsRequestInput } from '../request-types';
+import { UserFormData } from '../../../components/organism-user-form/user-form.component';
 
 const AddUserPage = (): React.ReactElement => {
   const [error, setError] = useState<Error>();
