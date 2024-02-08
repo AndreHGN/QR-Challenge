@@ -2,6 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import { UserFormData } from '../../../components/organism-user-form/user-form.component';
 import { useAxios } from '../../../hooks/use-axios';
 import { AddUserInput, User } from '../request-types';
+import { toast } from 'react-toastify';
+import { strings } from './strings';
 
 interface AddUserReturn {
   error?: Error;
@@ -34,7 +36,10 @@ export const addUser = (): AddUserReturn => {
         url: '/api/v1/users',
         data: userInput,
       },
-      () => navigate('/users'),
+      () => {
+        navigate('/users');
+        toast(strings.successMessage, { type: 'success' });
+      },
     );
   };
 

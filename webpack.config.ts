@@ -27,6 +27,10 @@ const config: ConfigurationAndDevServer = {
         test: /\.(ttf|png|jpeg|jpg|svg)$/,
         type: 'asset/resource',
       },
+      {
+        test: /\.(css|scss)$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   resolve: {

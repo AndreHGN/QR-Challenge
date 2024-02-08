@@ -5,6 +5,8 @@ import {
   UpdateUserDetailsInput,
   UpdateUserDetailsResponse,
 } from '../request-types';
+import { toast } from 'react-toastify';
+import { strings } from './strings';
 
 interface UpdateUserReturn {
   error?: Error;
@@ -37,9 +39,16 @@ export const updateUserDetails = (userId: string): UpdateUserReturn => {
         url: `/api/v1/users/${userId}`,
         data: userInput,
       },
-      () => navigate('/users'),
+      () => {
+        navigate('/users');
+        toast(strings.updateUserSuccess, { type: 'success' });
+      },
     );
   };
+
+  if (error) {
+    toast(error.message, { type: 'error' });
+  }
 
   return { error, loading, onUpdateUser: handleRequest };
 };

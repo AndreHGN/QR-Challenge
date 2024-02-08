@@ -42,5 +42,11 @@ export const getCustomTableStyles = (theme: DefaultTheme): TableStyles => {
         fontSize: theme.fontSizes.secondary,
       },
     },
+    noData: {
+      style: {
+        display: 'none',
+        backgroundColor: 'transparent',
+      },
+    },
   };
 };

@@ -11,6 +11,7 @@ import Layout from '../atom-layout/layout.styled';
 import { strings } from './strings';
 import userValidationSchema from './form-validation';
 import { Col, Row } from '../atom-grid/grid.styled';
+import { toast } from 'react-toastify';
 
 export interface UserFormData {
   name: string;
@@ -41,8 +42,8 @@ const UserForm = ({
       .then((result) => {
         setImageUrl(result);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((error: Error) => {
+        toast(error.message, { type: 'error' });
       });
   };
 

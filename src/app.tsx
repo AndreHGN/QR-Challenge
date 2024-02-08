@@ -4,6 +4,7 @@ import theme from './styles/theme';
 import GlobalStyle from './styles/global';
 import Navbar from './components/organism-navbar/navbar.component';
 import PageWrapper from './app.styled';
+import CustomToastContainer from './components/atom-toast-container/custom-toast-container.component';
 
 const App = () => {
   return (
@@ -14,6 +15,12 @@ const App = () => {
         <PageWrapper>
           <Outlet />
         </PageWrapper>
+        <CustomToastContainer
+          position='bottom-center'
+          autoClose={5000}
+          theme='colored'
+          closeOnClick
+        />
       </ThemeProvider>
     </>
   );
