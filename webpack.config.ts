@@ -24,7 +24,7 @@ const config: ConfigurationAndDevServer = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(ttf|png|jpeg|jpg|svg)/,
+        test: /\.(ttf|png|jpeg|jpg|svg)$/,
         type: 'asset/resource',
       },
     ],

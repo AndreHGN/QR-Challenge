@@ -1,5 +1,5 @@
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Users } from '../../pages/user/request-type';
+import { Users } from '../../pages/user/request-types';
 import Button from '../atom-button/button.component';
 import Layout from '../atom-layout/layout.styled';
 import Spinner from '../atom-spinner/spinner.styled';

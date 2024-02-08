@@ -10,7 +10,7 @@ import { readFileAsDataURL } from '../../utils/read-file';
 import Layout from '../atom-layout/layout.styled';
 import { strings } from './strings';
 import userValidationSchema from './form-validation';
-import { UserDetailsRequestInput } from '../../pages/user/request-type';
+import { Col, Row } from '../atom-grid/grid.styled';
 
 export interface UserFormData {
   name: string;
@@ -22,14 +22,14 @@ export interface UserFormData {
 }
 
 interface UserFormProps extends Omit<FormikConfig<UserFormData>, 'onSubmit'> {
-  onAddUser: (user: UserDetailsRequestInput) => void;
-  loading: boolean;
+  onSaveUserData: (user: UserFormData) => void;
+  isSaveLoading?: boolean;
 }
 
 const UserForm = ({
   initialValues,
-  onAddUser,
-  loading,
+  onSaveUserData,
+  isSaveLoading,
   ...props
 }: UserFormProps): React.ReactElement => {
   const [imageUrl, setImageUrl] = useState<string | undefined>(
@@ -47,18 +47,57 @@ const UserForm = ({
   };
 
   const handleSubmit = (formValues: UserFormData) => {
-    const UserDetailsRequestInput: UserDetailsRequestInput = {
-      user: {
-        name: formValues.name,
-        email: formValues.email,
-        admission_date: formValues.date,
-        job_title: formValues.jobTitle,
-        photo_url: imageUrl,
-      },
-    };
-
-    onAddUser(UserDetailsRequestInput);
+    const userFormData: UserFormData = formValues;
+    userFormData.avatar = imageUrl;
+    onSaveUserData(userFormData);
   };
+
+  const avatarField = (
+    <Layout $display='flex' $flexDirection='column' $alignItems='center'>
+      <Layout $mb='md'>
+        <Avatar img={imageUrl} size='xl' />
+      </Layout>
+      <FormFileField
+        name='image'
+        onFileChange={handleAvatarChange}
+        accept='imageUrl/*'
+        label={strings.avatarButton}
+      />
+    </Layout>
+  );
+
+  const otherDataFields = (
+    <>
+      <FormTextField
+        name='name'
+        type='text'
+        label={strings.inputs.name.label}
+        required
+        marginBottom
+      />
+      <FormTextField
+        name='email'
+        type='text'
+        label={strings.inputs.email.label}
+        required
+        marginBottom
+      />
+      <FormCpfField name='cpf' label={strings.inputs.cpf.label} marginBottom />
+      <FormDateField
+        name='date'
+        label={strings.inputs.date.label}
+        required
+        marginBottom
+      />
+      <FormTextField
+        name='jobTitle'
+        type='text'
+        label={strings.inputs.jobTitle.label}
+        required
+        marginBottom
+      />
+    </>
+  );
 
   return (
     <Formik<UserFormData>
@@ -69,63 +108,17 @@ const UserForm = ({
     >
       {(props) => (
         <form onSubmit={props.handleSubmit}>
-          <Layout $display='flex' $flexWrap='wrap'>
-            <Layout
-              $display='flex'
-              $flexDirection='column'
-              $mr='xxl'
-              $alignItems='center'
-            >
-              <Layout $mb='md'>
-                <Avatar img={imageUrl} size='xl' />
-              </Layout>
-              <FormFileField
-                name='avatar'
-                onFileChange={handleAvatarChange}
-                accept='imageUrl/*'
-                label={strings.avatarButton}
-              />
-            </Layout>
-            <Layout $width='50%'>
-              <FormTextField
-                name='name'
-                type='text'
-                label={strings.inputs.name.label}
-                required
-                marginBottom
-              />
-              <FormTextField
-                name='email'
-                type='text'
-                label={strings.inputs.email.label}
-                required
-                marginBottom
-              />
-              <FormCpfField
-                name='cpf'
-                label={strings.inputs.cpf.label}
-                marginBottom
-              />
-              <FormDateField
-                name='date'
-                label={strings.inputs.date.label}
-                required
-                marginBottom
-              />
-              <FormTextField
-                name='jobTitle'
-                type='text'
-                label={strings.inputs.jobTitle.label}
-                required
-                marginBottom
-              />
+          <Row $justifyContent='center' $spacing='md'>
+            <Col $colWidth={4}>{avatarField}</Col>
+            <Col $colWidth={6}>
+              {otherDataFields}
               <Layout $display='flex' $justifyContent='flex-end'>
-                <Button action='primary' type='submit' loading={loading}>
+                <Button action='primary' type='submit' loading={isSaveLoading}>
                   {strings.submitButton}
                 </Button>
               </Layout>
-            </Layout>
-          </Layout>
+            </Col>
+          </Row>
         </form>
       )}
     </Formik>

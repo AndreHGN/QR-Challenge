@@ -16,7 +16,7 @@ const PageWrapper = styled.div`
     max-width: 768px;
   }
   @media ${device.lg} {
-    max-width: 1024px;
+    max-width: 900px;
   }
 `;
 

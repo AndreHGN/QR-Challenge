@@ -1,7 +1,7 @@
 import { TableColumn } from 'react-data-table-component';
 import Table from '../atom-table/table.component';
 import { strings } from './strings';
-import { User, Users } from '../../pages/user/request-type';
+import { User, Users } from '../../pages/user/request-types';
 import caseInsensitiveSort from '../../utils/table-sort';
 import IconButton from '../atom-icon-button/icon-button.component';
 import { useNavigate } from 'react-router-dom';
