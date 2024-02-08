@@ -11,7 +11,6 @@ import Layout from '../atom-layout/layout.styled';
 import { strings } from './strings';
 import userValidationSchema from './form-validation';
 import { Col, Row } from '../atom-grid/grid.styled';
-import Spinner from '../atom-spinner/spinner.styled';
 
 export interface UserFormData {
   name: string;
