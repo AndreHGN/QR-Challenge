@@ -10,7 +10,6 @@ import { readFileAsDataURL } from '../../utils/read-file';
 import Layout from '../atom-layout/layout.styled';
 import { strings } from './strings';
 import userValidationSchema from './form-validation';
-import { UserDetailsRequestInput } from '../../pages/user/request-type';
 
 export interface UserFormData {
   name: string;
@@ -22,13 +21,13 @@ export interface UserFormData {
 }
 
 interface UserFormProps extends Omit<FormikConfig<UserFormData>, 'onSubmit'> {
-  onAddUser: (user: UserDetailsRequestInput) => void;
+  onSaveUserData: (user: UserFormData) => void;
   loading: boolean;
 }
 
 const UserForm = ({
   initialValues,
-  onAddUser,
+  onSaveUserData,
   loading,
   ...props
 }: UserFormProps): React.ReactElement => {
@@ -47,17 +46,9 @@ const UserForm = ({
   };
 
   const handleSubmit = (formValues: UserFormData) => {
-    const UserDetailsRequestInput: UserDetailsRequestInput = {
-      user: {
-        name: formValues.name,
-        email: formValues.email,
-        admission_date: formValues.date,
-        job_title: formValues.jobTitle,
-        photo_url: imageUrl,
-      },
-    };
-
-    onAddUser(UserDetailsRequestInput);
+    const userFormData: UserFormData = formValues;
+    userFormData.avatar = imageUrl;
+    onSaveUserData(userFormData);
   };
 
   return (
@@ -80,7 +71,7 @@ const UserForm = ({
                 <Avatar img={imageUrl} size='xl' />
               </Layout>
               <FormFileField
-                name='avatar'
+                name='image'
                 onFileChange={handleAvatarChange}
                 accept='imageUrl/*'
                 label={strings.avatarButton}

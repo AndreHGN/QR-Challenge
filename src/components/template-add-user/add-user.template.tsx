@@ -1,4 +1,3 @@
-import { UserDetailsRequestInput } from '../../pages/user/request-type';
 import Layout from '../atom-layout/layout.styled';
 import Title from '../atom-title/title.styled';
 import UserForm, {
@@ -7,7 +6,7 @@ import UserForm, {
 import { strings } from './strings';
 
 interface AddUserTemplateProps {
-  onAddUser: (user: UserDetailsRequestInput) => void;
+  onAddUser: (user: UserFormData) => void;
   loading: boolean;
 }
 
@@ -31,7 +30,7 @@ const AddUserTemplate = ({
       </Layout>
       <UserForm
         initialValues={initialValues}
-        onAddUser={onAddUser}
+        onSaveUserData={onAddUser}
         loading={loading}
       />
     </>
