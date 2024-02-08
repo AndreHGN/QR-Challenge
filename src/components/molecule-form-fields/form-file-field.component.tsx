@@ -18,6 +18,7 @@ const FormFileField = ({
   accept,
   required,
   onFileChange,
+  dataTestId,
   ...props
 }: FormFileFieldProps): React.ReactElement => {
   const ref = useRef<HTMLInputElement>(null);
@@ -44,6 +45,7 @@ const FormFileField = ({
         type='file'
         accept={accept}
         onChange={handleFileChange}
+        data-testid={dataTestId}
         {...props}
       />
       <Button type='button' action='secondary' size='sm' onClick={handleClick}>

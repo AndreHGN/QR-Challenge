@@ -12,6 +12,7 @@ const FormDateField = ({
   label,
   required,
   marginBottom,
+  dataTestId,
   ...props
 }: FormTextFieldProps): React.ReactElement => {
   return (
@@ -21,7 +22,13 @@ const FormDateField = ({
       label={label}
       marginBottom={marginBottom}
     >
-      <FieldStyled width='auto' name={name} type='date' {...props} />
+      <FieldStyled
+        width='auto'
+        name={name}
+        type='date'
+        data-testid={dataTestId}
+        {...props}
+      />
     </FieldWrapper>
   );
 };

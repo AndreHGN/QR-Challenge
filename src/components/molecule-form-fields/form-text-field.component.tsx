@@ -15,6 +15,7 @@ const FormTextField = ({
   label,
   required,
   marginBottom,
+  dataTestId,
   ...props
 }: FormTextFieldProps): React.ReactElement => {
   return (
@@ -24,7 +25,12 @@ const FormTextField = ({
       label={label}
       marginBottom={marginBottom}
     >
-      <FieldStyled name={name} type={type || 'text'} {...props} />
+      <FieldStyled
+        name={name}
+        type={type || 'text'}
+        data-testid={dataTestId}
+        {...props}
+      />
     </FieldWrapper>
   );
 };

@@ -11,5 +11,5 @@
     "moduleResolution": "node",
     "allowJs": true,
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "jest.config.js"],
 }
