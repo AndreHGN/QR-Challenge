@@ -3,6 +3,7 @@ import { Col, Row } from '../atom-grid/grid.styled';
 import Layout from '../atom-layout/layout.styled';
 import Spinner from '../atom-spinner/spinner.styled';
 import Title from '../atom-title/title.styled';
+import BackButton from '../molecule-back-button/back-button.component';
 import { CommentFormData } from '../molecule-comment-form/comment-form.component';
 import ErrorPlaceholder from '../molecule-error-placeholder/error-placeholder.component';
 import CommentSection from '../organism-comment-section/comment-section.component';
@@ -53,7 +54,10 @@ const UserDetailsTemplate = ({
 
   return (
     <>
-      <Layout $mb='xl'>
+      <Layout $display='flex' $mb='xl' $alignItems='center'>
+        <Layout $mr='md'>
+          <BackButton />
+        </Layout>
         <Title>{strings.pageTitle}</Title>
       </Layout>
       {isUserDataLoading ? (
