@@ -4,6 +4,7 @@ import Layout from '../atom-layout/layout.styled';
 import Spinner from '../atom-spinner/spinner.styled';
 import Title from '../atom-title/title.styled';
 import { CommentFormData } from '../molecule-comment-form/comment-form.component';
+import ErrorPlaceholder from '../molecule-error-placeholder/error-placeholder.component';
 import CommentSection from '../organism-comment-section/comment-section.component';
 import UserForm, {
   UserFormData,
@@ -40,6 +41,16 @@ const UserDetailsTemplate = ({
     avatar: userData?.photo_url,
   };
 
+  const userForm = (
+    <Layout $mb='xxl'>
+      <UserForm
+        initialValues={initialValues}
+        onSaveUserData={onUpdateUser}
+        isSaveLoading={isUpdateUserLoading}
+      />
+    </Layout>
+  );
+
   return (
     <>
       <Layout $mb='xl'>
@@ -49,25 +60,23 @@ const UserDetailsTemplate = ({
         <Layout $my='xxl' $display='flex' $justifyContent='center'>
           <Spinner color='primary' size='xl' />
         </Layout>
+      ) : userData ? (
+        <>
+          {userForm}
+          <Row $justifyContent='center'>
+            <Col $colWidth={10}>
+              <CommentSection
+                comments={commentsData}
+                isCommentsLoading={isCommentsLoading}
+                onCommentSubmit={onCreateComment}
+                isCreateLoading={isCreateCommentsLoading}
+              />
+            </Col>
+          </Row>
+        </>
       ) : (
-        <Layout $mb='xxl'>
-          <UserForm
-            initialValues={initialValues}
-            onSaveUserData={onUpdateUser}
-            isSaveLoading={isUpdateUserLoading}
-          />
-        </Layout>
+        <ErrorPlaceholder errorMessage={strings.noUserMessage} />
       )}
-      <Row $justifyContent='center'>
-        <Col $colWidth={10}>
-          <CommentSection
-            comments={commentsData}
-            isCommentsLoading={isCommentsLoading}
-            onCommentSubmit={onCreateComment}
-            isCreateLoading={isCreateCommentsLoading}
-          />
-        </Col>
-      </Row>
     </>
   );
 };

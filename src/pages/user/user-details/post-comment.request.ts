@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { CommentFormData } from '../../../components/molecule-comment-form/comment-form.component';
 import { useAxios } from '../../../hooks/use-axios';
 import { CreateCommentInput, CreateCommentOutput } from '../request-types';
@@ -35,6 +36,10 @@ export const postComment = (userId: string): PostCommentReturn => {
       onComplete,
     );
   };
+
+  if (error) {
+    toast(error.message, { type: 'error' });
+  }
 
   return { error, loading, onCreateComment: handleRequest };
 };

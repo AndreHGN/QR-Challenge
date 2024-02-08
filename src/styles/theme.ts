@@ -11,6 +11,7 @@ const theme: DefaultTheme = {
     white: '#F7F7F7',
     danger: '#CC2936',
     success: '#007c4b',
+    warning: '#FFD971',
   },
   fonts: {
     regular: 'Source-Sans-3',

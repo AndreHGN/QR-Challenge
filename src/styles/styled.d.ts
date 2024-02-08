@@ -13,7 +13,8 @@ export type Colors =
   | 'lightGray'
   | 'white'
   | 'danger'
-  | 'success';
+  | 'success'
+  | 'warning';
 
 export type FontWeights = 'normal' | 'semibold' | 'bold';
 

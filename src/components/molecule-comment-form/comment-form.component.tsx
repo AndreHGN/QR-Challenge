@@ -37,7 +37,6 @@ const CommentForm = ({
                   size='sm'
                   iconType='send'
                   loading={isCreateLoading}
-                  disabled={isCreateLoading}
                 />
               </Layout>
             </Col>

@@ -8,6 +8,7 @@ import UserTable from '../molecule-user-table/user-table.component';
 import { strings } from './strings';
 import UserFilterForm from '../organism-user-filter-form/user-filter-form.component';
 import { useTheme } from 'styled-components';
+import ErrorPlaceholder from '../molecule-error-placeholder/error-placeholder.component';
 
 interface UserListTemplateProps {
   userListData: Users;
@@ -21,6 +22,8 @@ const UserListTemplate = ({
   const navigate = useNavigate();
   const theme = useTheme();
   const [searchParams] = useSearchParams();
+
+  console.log(userListData);
 
   const { name, email, jobTitle } = Object.fromEntries([...searchParams]);
 
@@ -61,6 +64,8 @@ const UserListTemplate = ({
         <Layout $my='xxl' $display='flex' $justifyContent='center'>
           <Spinner color='primary' size='xl' />
         </Layout>
+      ) : filteredListData?.length === 0 ? (
+        <ErrorPlaceholder errorMessage={strings.emptyTableMessage} />
       ) : (
         <UserTable userListData={filteredListData} />
       )}

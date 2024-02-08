@@ -5,6 +5,9 @@ import CommentForm, {
   CommentFormData,
 } from '../molecule-comment-form/comment-form.component';
 import CommentCard from '../molecule-comment-card/comment-card.component';
+import Spinner from '../atom-spinner/spinner.styled';
+import Text from '../atom-text/text.styled';
+import { strings } from './strings';
 
 interface CommentSectionProps {
   comments: Comment[];
@@ -27,6 +30,12 @@ const CommentSection = ({
     );
   });
 
+  const noComments = (
+    <Layout $display='flex' $justifyContent='center'>
+      <Text>{strings.noComments}</Text>
+    </Layout>
+  );
+
   return (
     <Card $padding='lg'>
       <Layout $mb='xl'>
@@ -35,7 +44,15 @@ const CommentSection = ({
           onSubmit={onCommentSubmit}
         />
       </Layout>
-      {isCommentsLoading ? 'Loading' : commentsCards}
+      {isCommentsLoading ? (
+        <Layout $my='xxl' $display='flex' $justifyContent='center'>
+          <Spinner color='primary' size='md' />
+        </Layout>
+      ) : commentsCards.length === 0 ? (
+        noComments
+      ) : (
+        commentsCards
+      )}
     </Card>
   );
 };
