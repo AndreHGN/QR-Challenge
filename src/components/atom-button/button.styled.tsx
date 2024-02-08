@@ -45,8 +45,10 @@ const mapButtonActionToColors = (theme: DefaultTheme) => {
   return colorStyles;
 };
 
-export const hightlightOnHoverStyles = (borderStyles: RuleSet) => {
+export const hightlightOnHoverStyles = (borderStyles?: RuleSet) => {
   return css`
+    position: relative;
+
     &::before {
       position: absolute;
       top: 0;
@@ -55,7 +57,7 @@ export const hightlightOnHoverStyles = (borderStyles: RuleSet) => {
       left: 0;
       opacity: 0;
       content: '';
-      ${borderStyles}
+      ${borderStyles ? borderStyles : ''}
     }
 
     &:hover:enabled::before {
@@ -86,7 +88,6 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
   padding: ${({ theme }) => `${theme.paddings.sm} ${theme.paddings.md}`};
   width: ${({ width }) => width || 'auto'};
   cursor: pointer;
-  position: relative;
 
   font-weight: ${({ fontWeight, theme }) =>
     fontWeight ? theme.fontWeights[fontWeight] : theme.fontWeights.normal};

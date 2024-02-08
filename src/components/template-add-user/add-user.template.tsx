@@ -1,5 +1,6 @@
 import Layout from '../atom-layout/layout.styled';
 import Title from '../atom-title/title.styled';
+import BackButton from '../molecule-back-button/back-button.component';
 import UserForm, {
   UserFormData,
 } from '../organism-user-form/user-form.component';
@@ -25,7 +26,10 @@ const AddUserTemplate = ({
 
   return (
     <>
-      <Layout $mb='xl'>
+      <Layout $display='flex' $mb='xl' $alignItems='center'>
+        <Layout $mr='md'>
+          <BackButton />
+        </Layout>
         <Title>{strings.pageTitle}</Title>
       </Layout>
       <UserForm
