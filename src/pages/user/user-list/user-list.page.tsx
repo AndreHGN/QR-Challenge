@@ -1,13 +1,10 @@
 import React from 'react';
-import { useAxios } from '../../../hooks/use-axios';
 import UserListTemplate from '../../../components/template-user-list/user-list.template';
-import { UserListResponse, Users } from '../request-types';
+import { Users } from '../request-types';
+import { getUserList } from './get-user-list.request';
 
 const UserListPage = (): React.ReactElement => {
-  const { response, error, loading } = useAxios<undefined, UserListResponse>({
-    method: 'GET',
-    url: '/api/v1/users',
-  });
+  const { response, error, loading } = getUserList();
 
   if (error) {
     console.log(error);

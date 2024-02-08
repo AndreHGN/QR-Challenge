@@ -1,47 +1,13 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import AddUserTemplate from '../../../components/template-add-user/add-user.template';
-import axios from 'axios';
-import { UserDetailsRequestInput } from '../request-types';
 import { UserFormData } from '../../../components/organism-user-form/user-form.component';
+import { addUser } from './post-user.request';
 
 const AddUserPage = (): React.ReactElement => {
-  const [error, setError] = useState<Error>();
-  const [loading, setLoading] = useState(false);
+  const { error, loading, onAddUser } = addUser();
 
-  const navigate = useNavigate();
-
-  const handleAddUser = (userData: UserFormData) => {
-    setLoading(true);
-
-    const userInput: UserDetailsRequestInput = {
-      user: {
-        name: userData.name,
-        email: userData.email,
-        admission_date: userData.date,
-        job_title: userData.jobTitle,
-        photo_url: userData.avatar,
-      },
-    };
-
-    axios
-      .request({
-        method: 'POST',
-        url: '/api/v1/users',
-        headers: {
-          Accept: '*/*',
-        },
-        data: userInput,
-      })
-      .then(() => {
-        navigate('/users');
-      })
-      .catch((err: Error) => {
-        setError(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+  const handleAddUser = (user: UserFormData) => {
+    onAddUser(user);
   };
 
   if (error) {

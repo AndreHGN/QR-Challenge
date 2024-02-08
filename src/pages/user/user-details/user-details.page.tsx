@@ -67,7 +67,7 @@ const UserDetailsPage = (): React.ReactElement => {
   return (
     <UserDetailsTemplate
       userData={userData as User}
-      userLoading={userDetailsLoading}
+      isUserDataLoading={userDetailsLoading}
       onUpdateUser={handleUpdateUser}
       isUpdateUserLoading={isUpdateUserLoading}
       commentsData={commentsData as Comment[]}

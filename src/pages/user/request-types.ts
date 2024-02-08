@@ -13,7 +13,7 @@ export type UserDetailsResponse = {
   user: User;
 };
 
-export type UserDetailsRequestInput = {
+export type AddUserInput = {
   user: {
     name: string;
     email: string;

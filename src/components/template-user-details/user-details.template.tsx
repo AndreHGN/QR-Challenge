@@ -12,7 +12,7 @@ import { strings } from './strings';
 
 interface UserDetailsTemplateProps {
   userData: User;
-  userLoading: boolean;
+  isUserDataLoading: boolean;
   onUpdateUser: (user: UserFormData) => void;
   isUpdateUserLoading: boolean;
   commentsData: Comment[];
@@ -23,7 +23,7 @@ interface UserDetailsTemplateProps {
 
 const UserDetailsTemplate = ({
   userData,
-  userLoading,
+  isUserDataLoading,
   onUpdateUser,
   isUpdateUserLoading,
   commentsData,
@@ -45,7 +45,7 @@ const UserDetailsTemplate = ({
       <Layout $mb='xl'>
         <Title>{strings.pageTitle}</Title>
       </Layout>
-      {userLoading ? (
+      {isUserDataLoading ? (
         <Layout $my='xxl' $display='flex' $justifyContent='center'>
           <Spinner color='primary' size='xl' />
         </Layout>
@@ -55,7 +55,6 @@ const UserDetailsTemplate = ({
             initialValues={initialValues}
             onSaveUserData={onUpdateUser}
             isSaveLoading={isUpdateUserLoading}
-            isUserDataLoading={userLoading}
           />
         </Layout>
       )}

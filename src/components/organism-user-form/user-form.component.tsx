@@ -25,14 +25,12 @@ export interface UserFormData {
 interface UserFormProps extends Omit<FormikConfig<UserFormData>, 'onSubmit'> {
   onSaveUserData: (user: UserFormData) => void;
   isSaveLoading?: boolean;
-  isUserDataLoading?: boolean;
 }
 
 const UserForm = ({
   initialValues,
   onSaveUserData,
   isSaveLoading,
-  isUserDataLoading,
   ...props
 }: UserFormProps): React.ReactElement => {
   const [imageUrl, setImageUrl] = useState<string | undefined>(
@@ -109,31 +107,21 @@ const UserForm = ({
       validationSchema={userValidationSchema}
       {...props}
     >
-      {(props) =>
-        isUserDataLoading ? (
-          <Layout $my='xxl' $display='flex' $justifyContent='center'>
-            <Spinner color='primary' size='xl' />
-          </Layout>
-        ) : (
-          <form onSubmit={props.handleSubmit}>
-            <Row $justifyContent='center' $spacing='md'>
-              <Col $colWidth={4}>{avatarField}</Col>
-              <Col $colWidth={6}>
-                {otherDataFields}
-                <Layout $display='flex' $justifyContent='flex-end'>
-                  <Button
-                    action='primary'
-                    type='submit'
-                    loading={isSaveLoading}
-                  >
-                    {strings.submitButton}
-                  </Button>
-                </Layout>
-              </Col>
-            </Row>
-          </form>
-        )
-      }
+      {(props) => (
+        <form onSubmit={props.handleSubmit}>
+          <Row $justifyContent='center' $spacing='md'>
+            <Col $colWidth={4}>{avatarField}</Col>
+            <Col $colWidth={6}>
+              {otherDataFields}
+              <Layout $display='flex' $justifyContent='flex-end'>
+                <Button action='primary' type='submit' loading={isSaveLoading}>
+                  {strings.submitButton}
+                </Button>
+              </Layout>
+            </Col>
+          </Row>
+        </form>
+      )}
     </Formik>
   );
 };
